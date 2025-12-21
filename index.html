@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>COMMERCIAL SHOP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:linear-gradient(135deg,#0f172a,#020617);color:#fff;overflow-x:hidden;}
+
+/* NAVBAR */
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(2,6,23,.95);border-bottom:1px solid #1e293b;position:sticky;top:0;z-index:100;}
+.nav-left{display:flex;align-items:center;gap:12px;}
+.hamburger{font-size:1.5rem;cursor:pointer;margin-right:10px;user-select:none;color:#38bdf8;}
+.menu-box{display:flex;align-items:center;gap:6px;background:#1e293b;padding:8px 14px;border-radius:20px;font-size:1rem;font-weight:600;color:#38bdf8;white-space:nowrap;cursor:default;}
+.menu-box img{width:24px;height:24px;object-fit:cover;border-radius:6px;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.contact-btn, .location-btn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:20px;font-size:.9rem;color:white;text-decoration:none;cursor:pointer;}
+.contact-btn{background:#2563eb;}
+.location-btn{background:#2563eb;}
+.location-btn:hover{background:#059669;}
+.contact-btn img, .location-btn img{width:18px;height:18px;}
+
+/* SIDEBAR */
+.sidebar{position:fixed;top:0;left:-280px;width:260px;height:100%;background:#020617;padding:25px;transition:.3s;z-index:200;}
+.sidebar.active{left:0;}
+.sidebar a{display:block;margin-bottom:18px;color:#cbd5e1;text-decoration:none;}
+
+/* Overlay */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:150;}
+.overlay.active{display:block;}
+
+/* CENTERED SLIDER */
+.carousel-container{max-width:800px;margin:30px auto;overflow:hidden;position:relative;}
+.carousel-track{display:flex;transition:transform 0.5s ease;}
+.carousel-slide{min-width:70%;margin:0 10px;position:relative;border-radius:15px;overflow:hidden;flex-shrink:0;}
+.carousel-slide img{width:100%;height:300px;object-fit:cover;border-radius:15px;}
+.slide-caption{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.6);color:#fff;padding:6px 12px;border-radius:10px;font-size:0.9rem;text-align:center;}
+.prev, .next{position:absolute;top:50%;transform:translateY(-50%);font-size:2rem;background:rgba(0,0,0,0.5);padding:8px 12px;border-radius:50%;cursor:pointer;color:white;user-select:none;z-index:10;}
+.prev{left:10px;}
+.next{right:10px;}
+
+/* HERO SECTION */
+.hero{position:relative;padding:40px 15px;text-align:center;overflow:hidden;}
+.grid-bg{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,80px);gap:5px;position:absolute;inset:0;z-index:0;opacity:0.25;}
+.grid-bg div{background-size:cover;background-position:center;border-radius:6px;}
+
+/* Assign images */
+.grid-bg .img1{background-image:url('https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=300&h=300&fit=crop');}
+.grid-bg .img2{background-image:url('https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=300&h=300&fit=crop');}
+.grid-bg .img3{background-image:url('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=300&h=300&fit=crop');}
+.grid-bg .img4{background-image:url('https://images.unsplash.com/photo-1605902711622-cfb43c44379d?w=300&h=300&fit=crop');}
+.grid-bg .img5{background-image:url('https://images.unsplash.com/photo-1581091012184-46f0e8e916c2?w=300&h=300&fit=crop');}
+.grid-bg .img6{background-image:url('https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=300&h=300&fit=crop');}
+.grid-bg .img7{background-image:url('https://images.unsplash.com/photo-1598514983452-92fc3d5bb0bb?w=300&h=300&fit=crop');}
+.grid-bg .img8{background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=300&h=300&fit=crop');}
+.grid-bg .img9{background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=300&h=300&fit=crop');}
+
+/* Hero content above grid */
+.hero-content{position:relative;z-index:1;max-width:600px;margin:0 auto;}
+.hero h1{font-size:2rem;margin-bottom:15px;}
+.hero p{color:#cbd5e1;margin-bottom:20px;}
+.buttons{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;}
+.btn{padding:12px 24px;border-radius:25px;border:none;}
+.btn-primary{background:#2563eb;color:white;}
+.btn-outline{background:transparent;border:2px solid #94a3b8;color:white;}
+
+/* FOOTER */
+footer{text-align:center;padding:20px;color:#64748b;}
+
+/* MOBILE */
+@media(max-width:768px){
+  .carousel-slide{min-width:80%;}
+  .prev,.next{font-size:1.5rem;padding:6px 10px;}
+  .menu-box{padding:6px 10px;font-size:.9rem;}
+  .menu-box img{width:20px;height:20px;}
+  .contact-btn img, .location-btn img{width:16px;height:16px;}
+  .grid-bg{grid-template-rows:repeat(3,40px);}
+  .hero h1{font-size:1.6rem;}
+  .hero p{font-size:0.9rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+<h2>Menu</h2>
+<a href="#">Home</a>
+<a href="#">Products</a>
+<a href="#">Orders</a>
+<a href="#">Contact</a>
+</div>
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="hamburger" onclick="openSidebar()">☰</div>
+    <div class="menu-box">
+      <img src="shop.jpg" alt="Shop Icon">
+      <span>Kriti Electronics</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="tel:+911234567890" class="contact-btn">
+      <img src="phone.jpg" alt="Phone">
+      <span>Contact</span>
+    </a>
+    <a href="https://www.google.com/maps/place/Dibrugarh,+Assam" target="_blank" class="location-btn">
+      <img src="location.png" alt="Location">
+      <span>Location</span>
+    </a>
+  </div>
+</nav>
+
+<!-- CAROUSEL -->
+<div class="carousel-container">
+  <div class="carousel-track" id="carousel-track">
+    <div class="carousel-slide">
+      <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e" alt="Power Tools">
+      <div class="slide-caption">🔨 Power Tools</div>
+    </div>
+    <div class="carousel-slide">
+      <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41" alt="Plumbing">
+      <div class="slide-caption">🧰 Plumbing</div>
+    </div>
+    <div class="carousel-slide">
+      <img src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8" alt="Electrical">
+      <div class="slide-caption">⚡ Electrical</div>
+    </div>
+  </div>
+  <div class="prev" onclick="prevSlide()">‹</div>
+  <div class="next" onclick="nextSlide()">›</div>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="grid-bg">
+    <div class="img1"></div><div class="img2"></div><div class="img3"></div>
+    <div class="img4"></div><div class="img5"></div><div class="img6"></div>
+    <div class="img7"></div><div class="img8"></div><div class="img9"></div>
+  </div>
+  <div class="hero-content">
+    <h1>Trusted Commercial<br>Hardware & Tools Store</h1>
+    <p>Your one-stop destination for high-quality construction materials, industrial tools, electrical fittings, plumbing accessories, and professional hardware solutions.</p>
+    <div class="buttons">
+      <button class="btn btn-primary">Browse Products</button>
+      <button class="btn btn-outline">Get Quote</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>© 2025 Commercial Hardware Shop</footer>
+
+<script>
+const track = document.getElementById('carousel-track');
+const slides = Array.from(track.children);
+let currentIndex = 0;
+
+function updateCarousel(){
+  const slideWidth = slides[0].getBoundingClientRect().width + 20;
+  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+}
+
+function nextSlide(){currentIndex = (currentIndex + 1) % slides.length; updateCarousel();}
+function prevSlide(){currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateCarousel();}
+setInterval(nextSlide, 5000);
+
+// Sidebar open/close
+function openSidebar(){document.getElementById("sidebar").classList.add("active");document.getElementById("overlay").classList.add("active");}
+function closeSidebar(){document.getElementById("sidebar").classList.remove("active");document.getElementById("overlay").classList.remove("active");}
+
+// Touch swipe for carousel on mobile
+let startX = 0;
+track.addEventListener('touchstart', e => {startX = e.touches[0].clientX;});
+track.addEventListener('touchend', e => {
+  const endX = e.changedTouches[0].clientX;
+  if(endX - startX > 50) prevSlide();
+  else if(startX - endX > 50) nextSlide();
+});
+</script>
+
+</body>
+</html>
