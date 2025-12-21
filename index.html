@@ -20,11 +20,8 @@ body{background:linear-gradient(135deg,#0f172a,#020617);color:#fff;overflow-x:hi
 .menu-box{display:flex;align-items:center;gap:6px;background:#1e293b;padding:8px 14px;border-radius:20px;font-size:1rem;font-weight:600;color:#38bdf8;white-space:nowrap;cursor:default;}
 .menu-box img{width:24px;height:24px;object-fit:cover;border-radius:6px;}
 .nav-right{display:flex;align-items:center;gap:10px;}
-.contact-btn, .location-btn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:20px;font-size:.9rem;color:white;text-decoration:none;cursor:pointer;}
-.contact-btn{background:#2563eb;}
-.location-btn{background:#2563eb;}
-.location-btn:hover{background:#059669;}
-.contact-btn img, .location-btn img{width:18px;height:18px;}
+.contact-btn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:20px;font-size:.9rem;color:white;text-decoration:none;cursor:pointer;background:#2563eb;}
+.contact-btn img{width:18px;height:18px;}
 
 /* SIDEBAR */
 .sidebar{position:fixed;top:0;left:-280px;width:260px;height:100%;background:#020617;padding:25px;transition:.3s;z-index:200;}
@@ -49,8 +46,6 @@ body{background:linear-gradient(135deg,#0f172a,#020617);color:#fff;overflow-x:hi
 .hero{position:relative;padding:40px 15px;text-align:center;overflow:hidden;}
 .grid-bg{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,80px);gap:5px;position:absolute;inset:0;z-index:0;opacity:0.25;}
 .grid-bg div{background-size:cover;background-position:center;border-radius:6px;}
-
-/* Assign images */
 .grid-bg .img1{background-image:url('https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=300&h=300&fit=crop');}
 .grid-bg .img2{background-image:url('https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=300&h=300&fit=crop');}
 .grid-bg .img3{background-image:url('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=300&h=300&fit=crop');}
@@ -79,7 +74,7 @@ footer{text-align:center;padding:20px;color:#64748b;}
   .prev,.next{font-size:1.5rem;padding:6px 10px;}
   .menu-box{padding:6px 10px;font-size:.9rem;}
   .menu-box img{width:20px;height:20px;}
-  .contact-btn img, .location-btn img{width:16px;height:16px;}
+  .contact-btn img{width:16px;height:16px;}
   .grid-bg{grid-template-rows:repeat(3,40px);}
   .hero h1{font-size:1.6rem;}
   .hero p{font-size:0.9rem;}
@@ -94,11 +89,10 @@ footer{text-align:center;padding:20px;color:#64748b;}
 <a href="#">Home</a>
 <a href="#">Products</a>
 <a href="#">Orders</a>
-<a href="#">Contact</a>
-   <a href="https://www.google.com/maps/place/Dibrugarh,+Assam" target="_blank" class="location-btn">
-      <img src="location.png" alt="Location">
-      <span>Location</span>
-    </a>
+<a href="tel:+911234567890" class="contact-btn">
+  <img src="phone.jpg" alt="Phone">
+  <span>Contact</span>
+</a>
 </div>
 <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
 
@@ -116,7 +110,6 @@ footer{text-align:center;padding:20px;color:#64748b;}
       <img src="phone.jpg" alt="Phone">
       <span>Contact</span>
     </a>
-   
   </div>
 </nav>
 
@@ -169,7 +162,6 @@ function updateCarousel(){
   const slideWidth = slides[0].getBoundingClientRect().width + 20;
   track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
 }
-
 function nextSlide(){currentIndex = (currentIndex + 1) % slides.length; updateCarousel();}
 function prevSlide(){currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateCarousel();}
 setInterval(nextSlide, 5000);
