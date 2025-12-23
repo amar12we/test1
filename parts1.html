@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Products - Commercial Shop</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* HEADER */
+header {
+  background: rgba(2,6,23,.95);
+  padding: 15px 20px;
+  text-align: center;
+  border-bottom: 1px solid #1e293b;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: #38bdf8;
+  margin-bottom: 5px;
+}
+
+header p {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+/* ITEM GRID */
+.items-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.item-card {
+  background: #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.item-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.item-content {
+  padding: 12px;
+}
+
+.item-content h3 {
+  font-size: 1rem;
+  color: #38bdf8;
+  margin-bottom: 5px;
+}
+
+.item-content p {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+}
+
+.item-content span {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+/* Hover Effect */
+.item-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #64748b;
+  border-top: 1px solid #1e293b;
+  margin-top: 40px;
+  font-size: 0.8rem;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .items-container {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Our Products</h1>
+  <p>Explore a wide range of high-quality tools and hardware items</p>
+</header>
+
+<main>
+  <div class="items-container">
+    <div class="item-card" onclick="location.href='product-detail.html'">
+      <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=400&h=300&fit=crop" alt="Power Tools">
+      <div class="item-content">
+        <h3>Power Tools</h3>
+        <p>High-quality drills, grinders, and saws.</p>
+        <span>Tools</span>
+      </div>
+    </div>
+
+    <div class="item-card" onclick="location.href='product-detail.html'">
+      <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=400&h=300&fit=crop" alt="Plumbing">
+      <div class="item-content">
+        <h3>Plumbing</h3>
+        <p>Pipes, fittings, and plumbing accessories.</p>
+        <span>Plumbing</span>
+      </div>
+    </div>
+
+    <div class="item-card" onclick="location.href='product-detail.html'">
+      <img src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=400&h=300&fit=crop" alt="Electrical">
+      <div class="item-content">
+        <h3>Electrical</h3>
+        <p>Wires, switches, and electrical components.</p>
+        <span>Electrical</span>
+      </div>
+    </div>
+
+    <div class="item-card" onclick="location.href='product-detail.html'">
+      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44379d?w=400&h=300&fit=crop" alt="Hardware">
+      <div class="item-content">
+        <h3>Hardware</h3>
+        <p>Tools, nuts, bolts, and fasteners.</p>
+        <span>Hardware</span>
+      </div>
+    </div>
+
+    <div class="item-card" onclick="location.href='product-detail.html'">
+      <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&h=300&fit=crop" alt="Safety Gear">
+      <div class="item-content">
+        <h3>Safety Gear</h3>
+        <p>Helmets, gloves, and protective clothing.</p>
+        <span>Safety</span>
+      </div>
+    </div>
+
+    <div class="item-card" onclick="location.href='product-detail.html'">
+      <img src="https://images.unsplash.com/photo-1603415526960-f5f2d6d1d0a2?w=400&h=300&fit=crop" alt="Paint & Supplies">
+      <div class="item-content">
+        <h3>Paint & Supplies</h3>
+        <p>Paints, brushes, rollers, and other supplies.</p>
+        <span>Paint</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2025 Commercial Hardware Shop
+</footer>
+
+</body>
+</html>
