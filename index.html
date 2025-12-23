@@ -275,8 +275,464 @@ body{background:linear-gradient(135deg,#0f172a,#020617);color:#fff;overflow-x:hi
   opacity: 0.8;
 }
 
+/* PRODUCT SHOWCASE SECTION */
+.product-showcase {
+  margin: 30px 10px;
+  padding: 25px 15px;
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(14px);
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 0.8s ease;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.product-showcase.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
+/* PRODUCT ROW */
+.product-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 30px;
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.product-row {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+
+.product-showcase.visible .product-row {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s; /* stagger effect */
+}
+
+.product-row:nth-child(2) { transition-delay: 0.2s; }
+.product-row:nth-child(3) { transition-delay: 0.3s; }
+.product-row:hover {
+  background: rgba(255,255,255,0.03);
+  transform: translateY(-4px);
+}
+.product-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* IMAGE */
+.product-row img {
+  width: 45%;
+  max-width: 220px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.product-row:hover img {
+  transform: scale(1.06);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.55);
+}
+
+/* TEXT */
+.product-info {
+  flex: 1;
+  transition: transform 0.35s ease;
+}
+
+
+.product-row:hover .product-info {
+  transform: translateX(4px);
+}
+
+.product-row.reverse:hover .product-info {
+  transform: translateX(-4px);
+}
+
+
+.product-info h3 {
+  font-size: 1.05rem;
+  color: #38bdf8;
+  margin-bottom: 6px;
+}
+
+.product-info p {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+.product-row::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(56,189,248,0.6), transparent);
+}
+
+.product-row:last-child::after {
+  display: none;
+}
+.product-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: rgba(56,189,248,0.15);
+  color: #38bdf8;
+  margin-bottom: 6px;
+}
+
+
+/* MOBILE – KEEP LEFT / RIGHT ALTERNATING */
+@media (max-width:480px){
+
+.product-row {
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.product-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.product-row img {
+  width: 40%;
+  height: 110px;
+  max-width: none;
+}
+
+.product-info {
+  width: 60%;
+}
+
+.product-info h3 {
+  font-size: 0.95rem;
+}
+
+.product-info p {
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+}
+/* AWARDS SLIDER */
+.awards-slider-section {
+  margin: 40px 10px;
+  padding: 30px 10px;
+  background: rgba(15,23,42,0.75);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.awards-slider-section h2 { font-size: 1.5rem; color: #38bdf8; margin-bottom: 8px; }
+.awards-slider-section p { font-size: 0.9rem; color: #cbd5e1; margin-bottom: 20px; }
+
+.awards-slider-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 10px;
+}
+
+.awards-slider-wrapper::-webkit-scrollbar { height: 8px; }
+.awards-slider-wrapper::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
+
+.award-card {
+  flex: 0 0 45%; /* show 2 cards at a time on mobile */
+  scroll-snap-align: start;
+  background: rgba(30,41,59,0.85);
+  padding: 60px 15px 20px 15px;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  flex: 0 0 42%; /* slightly smaller so 3rd peeks */
+  scroll-snap-align: start;
+}
+
+.awards-slider-wrapper {
+  padding-left: 15px; /* optional, for better offset */
+}
+
+.award-card:hover { transform: scale(1.05); }
+
+.award-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid #38bdf8;
+  margin: 0 auto 10px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.award-icon { font-size: 2rem; margin-bottom: 8px; color: #facc15; }
+.award-card h3 { font-size: 1rem; color: #38bdf8; margin-bottom: 6px; }
+.award-card p { font-size: 0.8rem; color: #cbd5e1; line-height: 1.4; }
+
+/* POPUP LIGHTBOX */
+.award-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 500;
+  justify-content: center;
+  align-items: center;
+}
+
+.award-popup-content {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 300px;
+  width: 90%;
+  position: relative;
+}
+
+.award-popup-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto 15px;
+  border: 4px solid #38bdf8;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #facc15;
+}
+
+
+.video-box {
+  position: relative;
+  max-width: 700px;
+  margin: 40px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.video-box:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+
+.video-box video {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15,23,42,0.35); 
+  backdrop-filter: blur(3px);      
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  transition: background 0.35s ease;
+}
+
+
+.video-box.playing .video-overlay {
+  background: rgba(0,0,0,0.2);
+}
+
+.video-overlay h3 {
+  font-size: 1.4rem;
+  color: #38bdf8;
+  margin-bottom: 8px;
+}
+
+.video-overlay p {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+
+
+/* GENERAL STYLES */
+.banner-container {
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  max-width: 1000px;
+  margin: 40px auto 60px auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: 16px;
+}
+
+.banner-content {
+  flex: 1.2;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+.banner-content h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 15px 0;
+  line-height: 1.2;
+  color: #38bdf8;
+}
+
+.banner-content p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  color: #cbd5e1;
+}
+
+.banner-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.btn-yellow {
+  background-color: #38bdf8;
+  color: #0f172a;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-yellow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.phone-link {
+  background: #1e293b;
+  color: #38bdf8;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #38bdf8;
+}
+
+.banner-image-wrapper {
+  flex: 1;
+  position: relative;
+  background: rgba(56,189,248,0.1);
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+  margin-left: -50px;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(18% 5%, 100% 5%, 100% 95%, 5% 95%);
+}
+
+/* MOBILE/TABLET RESPONSIVE */
+@media (max-width: 768px) {
+  .banner-container {
+    flex-direction: row !important;
+    margin: 20px 10px 40px 10px;
+    height: auto;
+  }
+
+  .banner-content {
+    padding: 20px;
+    flex: 1;
+  }
+
+  .banner-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .banner-content p {
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+  }
+
+  .banner-actions {
+    display: flex;
+    flex-wrap: nowrap;        
+    gap: 10px;                
+    justify-content: flex-start; 
+    align-items: center;        /* vertically align buttons */
+  }
+
+  .btn-yellow {
+    flex: 0 0 auto;           /* compact width for chat button */
+    padding: 10px 20px;       
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  .phone-link {
+    flex: 1;                  /* occupy remaining horizontal space */
+    text-align: center;
+    padding: 10px 0;          
+    font-size: 0.85rem;
+  }
+  
+  .banner-image-wrapper {
+    flex: 1;
+    margin-left: 0;
+    height: 180px;  
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: polygon(15% 5%, 100% 5%, 100% 95%, 5% 95%);
+  }
+}
+
+/* MOBILE AWARDS SLIDER FIX */
+@media(min-width: 481px){
+  .award-card { flex: 0 0 200px; }
+  .awards-slider-wrapper { justify-content: center; }
+}
 
 
 /* FOOTER */
@@ -345,9 +801,9 @@ footer{text-align:center;padding:15px;color:#64748b;font-size:0.8rem;}
     <div style="background-image:url('https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=200&h=200&fit=crop');"></div>
     <div style="background-image:url('https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=200&h=200&fit=crop');"></div>
     <div style="background-image:url('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=200&h=200&fit=crop');"></div>
-    <div style="background-image:url('https://images.unsplash.com/photo-1605902711622-cfb43c44379d?w=200&h=200&fit=crop');"></div>
-    <div style="background-image:url('https://images.unsplash.com/photo-1581091012184-46f0e8e916c2?w=200&h=200&fit=crop');"></div>
-    <div style="background-image:url('https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=200&h=200&fit=crop');"></div>
+    <div style="background-image:url('https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=200&h=200&fit=crop');"></div>
+    <div style="background-image:url('tool.jpg');"></div>
+    <div style="background-image:url('tools1.jpg');"></div>
   </div>
 
   <div class="hero-content">
@@ -359,12 +815,12 @@ footer{text-align:center;padding:15px;color:#64748b;font-size:0.8rem;}
       <div class="owner-card" id="owner-card">
         <div class="owner-card-inner">
           <div class="owner-card-front">
-            <img src="https://images.unsplash.com/photo-1603415526960-f5f2d6d1d0a2?w=200&h=200&fit=crop" alt="Owner Front">
+            <img src="owner1.png" alt="Owner Front">
             <h3><b>Mr. Kriti Dutta</b></h3>
             <p><b>Founder & CEO</b></p>
           </div>
           <div class="owner-card-back">
-            <img src="https://images.unsplash.com/photo-1603415526960-f5f2d6d1d0a2?w=200&h=200&fit=crop" alt="Owner Back">
+            <img src="owner2.png" alt="Owner Back">
             <h3>About Owner</h3>
             <p>Passionate about providing quality hardware and tools. Over 15 years of experience in the industry.</p>
           </div>
@@ -402,6 +858,120 @@ footer{text-align:center;padding:15px;color:#64748b;font-size:0.8rem;}
   </div>
 </div>
 
+<!-- PRODUCT SHOWCASE SECTION -->
+<span class="product-tag"><b>FEATURED</b></span>
+
+<section class="product-showcase" id="productShowcase">
+
+  <div class="product-row">
+    <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=500" alt="Power Drill">
+    <div class="product-info">
+      <h3>Industrial Power Drill</h3>
+      <p>
+        Heavy-duty drill machine designed for construction and professional usage.
+        Powerful motor, ergonomic grip, and long operational life.
+      </p>
+    </div>
+  </div>
+
+  <div class="product-row reverse">
+    <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=500" alt="Plumbing Tools">
+    <div class="product-info">
+      <h3>Professional Plumbing Tools</h3>
+      <p>
+        Premium quality plumbing accessories for reliable installations.
+        Rust-resistant, leak-proof, and trusted by professionals.
+      </p>
+    </div>
+  </div>
+
+  <div class="product-row">
+    <img src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=500" alt="Electrical Products">
+    <div class="product-info">
+      <h3>Certified Electrical Components</h3>
+      <p>
+        Safe and durable electrical products meeting industrial standards.
+        Ideal for commercial, residential, and industrial projects.
+      </p>
+    </div>
+  </div>
+
+</section>
+  <!-- AWARDS & ACHIEVEMENTS SECTION SLIDABLE -->
+<section class="awards-slider-section">
+  <h2>Our Awards & Achievements</h2>
+  <p>Recognized for excellence in service, quality, and innovation over the years.</p>
+
+  <div class="awards-slider-wrapper" id="awardsSlider">
+    <div class="award-card" onclick="openAward(this)">
+      <div class="award-img" style="background-image:url('award1.jpeg');"></div>
+      <div class="award-icon">🥇</div>
+      <h3>Best Hardware Supplier 2023</h3>
+      <p>Recognized by National Construction Association.</p>
+    </div>
+    <div class="award-card" onclick="openAward(this)">
+      <div class="award-img" style="background-image:url('award1.jpg');"></div>
+      <div class="award-icon">🏅</div>
+      <h3>Customer Choice Award</h3>
+      <p>Voted #1 by loyal customers for outstanding service.</p>
+    </div>
+    <div class="award-card" onclick="openAward(this)">
+      <div class="award-img" style="background-image:url('award2.jpeg');"></div>
+      <div class="award-icon">🎖️</div>
+      <h3>Innovation in Tools</h3>
+      <p>Awarded for introducing cutting-edge industrial tools.</p>
+    </div>
+    <div class="award-card" onclick="openAward(this)">
+      <div class="award-img" style="background-image:url('award3.jpeg');"></div>
+      <div class="award-icon">🌟</div>
+      <h3>Top Retailer 2024</h3>
+      <p>Recognized as one of the fastest-growing hardware stores.</p>
+    </div>
+  </div>
+</section>
+
+<!-- POPUP LIGHTBOX -->
+<div id="awardPopup" class="award-popup" onclick="closeAward()">
+  <div class="award-popup-content" onclick="event.stopPropagation()">
+    <span class="close-btn" onclick="closeAward()">×</span>
+    <div class="award-popup-img" id="popupImg"></div>
+    <h3 id="popupTitle"></h3>
+    <p id="popupDesc"></p>
+  </div>
+</div>
+</section>
+
+<!-- SCROLL-ACTIVATED VIDEO -->
+<div class="video-box" id="videoBox">
+  <video id="scrollVideo" muted autoplay loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=600">
+    <source src="hi.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay">
+    <h3>Industrial Tools in Action</h3>
+    <p>See our premium tools performing in real-world projects.</p>
+  </div>
+</div>
+<!-- FEATURED BANNER SECTION -->
+<div class="banner-container" style="background: linear-gradient(135deg, #0f172a, #1e293b); color: #fff;">
+  <div class="banner-content">
+    <h1>KRITI ELECTRONICS</h1>
+    <p>Shop with confidence at Kriti Electronics. Premium tools, industrial hardware, flexible payment options, and speedy delivery.</p>
+    
+    <div class="banner-actions">
+      <a href="https://wa.me/917075550101?text=Hello%20I%20want%20to%20inquire%20about%20your%20products" target="_blank" class="btn-yellow" style="background:#25D366; color:#fff;">
+        Chat With Us
+      </a>
+      
+      <a href="tel:9075550101" class="phone-link" style="background:#1e293b; color:#38bdf8; border:1px solid #38bdf8;">
+        <span>📞</span>6000123456
+      </a>
+    </div>
+  </div>
+
+  <div class="banner-image-wrapper" style="background: rgba(56,189,248,0.1); margin-left: -50px; clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);">
+    <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&w=800&q=80" alt="Tools & Hardware" class="banner-image" style="clip-path: polygon(18% 5%, 100% 5%, 100% 95%, 5% 95%);">
+  </div>
+</div>
 
 
 
@@ -565,6 +1135,83 @@ function goToPage(element) {
     window.location.href = page;
   }
 }
+// Reveal product section on scroll
+const showcase = document.getElementById("productShowcase");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      showcase.classList.add("visible");  // Animate in
+    } else {
+      showcase.classList.remove("visible"); // Reset when scrolling up
+    }
+  });
+}, { threshold: 0.2 });
+
+observer.observe(showcase);
+// Reveal on scroll
+const awardsSection = document.querySelector('.awards-section');
+const awardsObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      awardsSection.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+awardsObserver.observe(awardsSection);
+function openAward(card) {
+  const img = card.querySelector('.award-img').style.backgroundImage;
+  const title = card.querySelector('h3').textContent;
+  const desc = card.querySelector('p').textContent;
+
+  const popupImg = document.getElementById('popupImg');
+  const popupTitle = document.getElementById('popupTitle');
+  const popupDesc = document.getElementById('popupDesc');
+
+  // Remove url("...") from background-image
+  popupImg.style.backgroundImage = img;
+  popupTitle.textContent = title;
+  popupDesc.textContent = desc;
+
+  document.getElementById('awardPopup').style.display = 'flex';
+}
+const awardsSlider = document.getElementById('awardsSlider');
+const awardCards = Array.from(awardsSlider.children);
+function closeAward() {
+  const popup = document.getElementById('awardPopup');
+  popup.style.display = 'none';
+}
+function toggleVideoPlay() {
+  const videoContainer = document.querySelector(".video-container");
+  const video = document.getElementById("mainVideo");
+
+  if (video.paused) {
+    video.play();
+    videoContainer.classList.add("playing");
+  } else {
+    video.pause();
+    videoContainer.classList.remove("playing");
+  }
+}
+const scrollVideo = document.getElementById("scrollVideo");
+const videoBox = document.getElementById("videoBox");
+
+const videoObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Attempt to play video automatically
+      scrollVideo.play().catch(err => console.log("Autoplay failed:", err));
+      videoBox.classList.add("playing");
+    } else {
+      scrollVideo.pause();
+      videoBox.classList.remove("playing");
+    }
+  });
+}, { threshold: 0.5 }); // 50% visible triggers play
+
+videoObserver.observe(videoBox);
+
 
 
 
